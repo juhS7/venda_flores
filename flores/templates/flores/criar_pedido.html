@@ -1,0 +1,83 @@
+{% extends 'flores/base.html' %}
+
+
+{% block title %}Casa do Lírio - Criar Pedido{% endblock %}
+
+{% block content %}
+<header>
+    <div class="banner">
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eget quam sit amet mi imperdiet ornare.
+        </p>
+    </div>
+</header>
+
+<main class="pedido-container">
+    <h2>Finalizar Pedido</h2>
+</main>
+
+<form class="form-pedido" method="post">
+    {% csrf_token %}
+    <section class="dados-cliente">
+        <h3>Seus Dados</h3>
+
+        <label>
+            Nome completo
+            {{ form.nome }}
+        </label>
+
+        <label>
+            Email
+            {{ form.email }}
+        </label>
+
+        <label>
+            Telefone
+            {{ form.telefone }}
+        </label>
+    </section>
+
+    <section class="endereco-entrega">
+        <h3>Endereço de Entrega</h3>
+
+        <label>
+            CEP
+            {{ form.cep }}
+        </label>
+
+        <label>
+            Rua
+            {{ form.rua }}
+        </label>
+
+        <label>
+            Número
+            {{ form.numero }}
+        </label>
+
+        <label>
+            Complemento
+            {{ form.complemento }}
+        </label>
+
+        <label>
+            Cidade
+            {{ form.cidade }}
+        </label>
+
+        <label>
+            Estado
+            {{ form.estado }}
+        </label>
+    </section>
+
+    <section class="resumo-pedido">
+        <h3>Resumo do Pedido</h3>
+        <p>Produtos: <strong>R$ {{ total_produtos }}</strong></p>
+        <p>Frete: <strong>R$ {{ valor_frete }}</strong></p>
+        <p class="total">Total: <strong>R$ {{ total_geral }}</strong></p>
+
+        <button type="submit">Confirmar Pedido</button>
+    </section>
+</form>
+{% endblock %}

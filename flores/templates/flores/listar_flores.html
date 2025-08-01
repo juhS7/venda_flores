@@ -1,0 +1,43 @@
+{% extends 'flores/base.html' %}
+{% block content %}
+<main class="container py-5">
+    <aside class="filter mb-4">
+        <h2 class="mb-3">Filtrar</h2>
+        <div class="filter-group mb-2">
+            <h3 class="h6">Tipo</h3>
+            <label><input type="checkbox" name="tipo" value="rosas"> Rosas</label><br>
+            <label><input type="checkbox" name="tipo" value="lirios"> Lírios</label><br>
+            <label><input type="checkbox" name="tipo" value="orquideas"> Orquídeas</label>
+        </div>
+        <div class="filter-group">
+            <h3 class="h6">Preço</h3>
+            <label><input type="checkbox" name="preco" value="ate50"> Até R$50</label><br>
+            <label><input type="checkbox" name="preco" value="50a100"> R$50 a R$100</label><br>
+            <label><input type="checkbox" name="preco" value="mais100"> Acima de R$100</label>
+        </div>
+    </aside>
+
+    <section class="products row">
+        {% for flor in flores %}
+        <div class="product-card col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="{{ flor.imagem.url }}" alt="{{ flor.nome }}" class="card-img-top">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ flor.nome }}</h5>
+                    <p class="card-text">{{ flor.descricao|truncatechars:80 }}</p>
+                    <p class="card-text fw-bold text-success">R$ {{ flor.preco }}</p>
+                    <div class="mt-auto">
+                        <a href="{% url 'criar_pedido' flor.id %}" class="btn btn-sm btn-outline-success">Adicionar ao carrinho</a>
+                        <a href="#" class="btn btn-sm btn-outline-secondary">Ver detalhes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center">Nenhuma flor disponível no momento.</p>
+        {% endfor %}
+    </section>
+</main>
+{% endblock %}
+
+

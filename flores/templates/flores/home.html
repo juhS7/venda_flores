@@ -1,0 +1,116 @@
+﻿{% extends 'flores/base.html' %}
+{% load static %}
+{% block title %} Inicio | Casa do Lirio{% endblock %}
+{% block content %}
+<section class="home">
+    <img src="{% static 'img/slide.png' %}" alt="">
+</section>
+<section class="experience">
+    <div class="content">
+        <h2>Mais que uma floricultura - uma experiência</h2>
+        <div class="info-block">
+            <div class="icon"><i class="fa-solid fa-tree"></i></div>
+            <div class="text">
+                <h3>FRESCOR É MAIS DO QUE ENTREGA DE FLORES<br><span>FRESCOR - ACIMA DE TUDO</span></h3>
+                <p>Cooperamos apenas com fazendas e floristas de confiança, sem comprometer a qualidade.</p>
+            </div>
+        </div>
+        <div class="info-block">
+            <div class="icon"><i class="fa-solid fa-truck"></i></div>
+            <div class="text">
+                <h3>ENTREGA RÁPIDA</h3>
+                <p>Faça seu pedido até às 14h e o buquê estará nas mãos do feliz destinatário ainda hoje.</p>
+            </div>
+        </div>
+        <div class="info-block">
+            <div class="icon"><i class="fa-solid fa-handshake"></i></div>
+            <div class="text">
+                <h3>ABORDAGEM ECOLÓGICA</h3>
+                <p>Mínimo de plástico, embalagens feitas com materiais reciclados e cuidado com a natureza em cada etapa.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="catalogo">
+    <nav>
+        <div class="catologo-text">
+            <a href="#">TODOS</a>
+            <a href="#">BUQUÊ MONOFLORAL</a>
+            <a href="#">PARA MADRINHAS</a>
+            <a href="#">FLORES SECAS</a>
+            <a href="#">CESTA DE FLORES</a>
+            <a href="#">PRESENTES</a>
+        </div>
+    </nav>
+    <div class="catalogo-itens">
+        <img src="{% static 'img/1.png' %}" alt="">
+        <img src="{% static 'img/2.png' %}" alt="">
+        <img src="{% static 'img/3.png' %}" alt="">
+        <img src="{% static 'img/vase-flower.png' %}" alt="">
+    </div>
+</section>
+<section class="application">
+    <div class="form-container">
+        <div class="image-side">
+            <h2>Faça Seu Orçamento</h2>
+            <p>Nos guie pela sua ideia.</p>
+            <img src="{% static 'img/2.png' %}" alt="Buquê com espelho redondo">
+        </div>
+        <form class="form-side">
+            <label>
+                Nome:
+                <div class="input-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <input type="text" placeholder="Seu nome" required>
+                </div>
+            </label>
+            <label>
+                Celular:
+                <div class="input-icon">
+                    <i class="fas fa-phone"></i>
+                    <input type="tel" placeholder="Número de contato" required>
+                </div>
+            </label>
+            <label>
+                Número de buquês:
+                <div class="input-icon">
+                    <i class="fas fa-seedling"></i>
+                    <input type="number" placeholder="Quantos buquês você precisa?" min="1" required>
+                </div>
+            </label>
+            <label>
+                Orçamento estimado:
+                <div class="input-icon">
+                    <i class="fas fa-dollar-sign"></i>
+                    <select required>
+                        <option selected disabled>Seu orçamento</option>
+                        <option>R$20–R$50</option>
+                        <option>R$50–R$100</option>
+                        <option>R$100+</option>
+                    </select>
+                </div>
+            </label>
+            <label>
+                Ocasião:
+                <div class="input-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                    <select required>
+                        <option selected disabled>Qual a ocasião?</option>
+                        <option>Aniversário</option>
+                        <option>Casamento</option>
+                        <option>Outras</option>
+                    </select>
+                </div>
+            </label>
+            <label>
+                Comentários sobre a ordem:
+                <div class="input-icon">
+                    <i class="fas fa-pen"></i>
+                    <textarea placeholder="Qual sua cor, estilo e entrega?" rows="3"></textarea>
+                </div>
+            </label>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

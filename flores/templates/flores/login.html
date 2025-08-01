@@ -1,0 +1,28 @@
+{% extends 'flores/base.html' %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<main class="login-container">
+    <form method="post" class="form-login">
+        <h2>Entrar na Conta</h2>
+        {% csrf_token %}
+
+        <label for="{{ form.username.id_for_label }}">
+            Usuario
+            {{ form.username }}
+        </label>
+
+        <label for="{{ form.password.id_for_label }}">
+            Senha
+            {{ form.password }}
+        </label>
+
+        <button type="submit">Entrar</button>
+
+        <p class="registro-link">
+            Nao tem conta? <a href="{% url 'registro' %}">Crie agora</a>
+        </p>
+    </form>
+</main>
+{% endblock %}
+

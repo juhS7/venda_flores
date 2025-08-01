@@ -1,0 +1,23 @@
+﻿# Arquivos do Python
+*.pyc
+__pycache__/
+
+# Banco de dados local
+*.sqlite3
+
+# Configurações do VS Code
+.vscode/
+.vs/
+
+# Pastas temporárias
+env/
+venv/
+*.log
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos do Django
+/static/
+media/

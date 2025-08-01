@@ -1,0 +1,62 @@
+﻿{% extends 'flores/base.html' %}
+{% block title %}Casa do Lirio - Meu Carrinho{% endblock %}
+
+{% block content %}
+<section class="breadcrumb-area">
+    <h1>Meu Carrinho</h1>
+    <div class="breadcrumb-path">
+        <a href="{% url 'listar_flores' %}">Home</a> / Carrinho
+    </div>
+</section>
+
+<main class="cart-layout">
+    <section class="cart-list">
+        {% if carrinho %}
+        {% for item in carrinho %}
+        <article class="cart-item">
+            <div class="item-image">
+                <img src="{{ item.flor.imagem.url }}" alt="{{ item.flor.nome }}">
+            </div>
+            <div class="item-details">
+                <h3 class="item-name">{{ item.flor.nome }}</h3>
+                <p class="item-price">R$ {{ item.flor.preco }}</p>
+            </div>
+            <div class="qty-input-wrapper">
+                <label>Quantidade</label>
+                <input type="number" class="qty-input" min="1" value="{{ item.quantidade }}" readonly>
+            </div>
+            <div class="item-total-price">
+                R$ {{ item.flor.preco|floatformat:2|add:"0"|floatformat:2|floatformat:""|add:item.quantidade|floatformat:""|floatformat:2 }}
+            </div>
+            <form method="post" action="{% url 'remover_do_carrinho' item.id %}">
+                {% csrf_token %}
+                <button class="cancel-button">Remover</button>
+            </form>
+        </article>
+        {% endfor %}
+        {% else %}
+        <p>O carrinho está vazio.</p>
+        {% endif %}
+
+        <a href="{% url 'listar_flores' %}" class="back-shop">&laquo; Continuar Comprando</a>
+    </section>
+
+    {% if carrinho %}
+    <aside class="cart-summary">
+        <h2>Resumo da Compra</h2>
+        <div class="sub-info">
+            <p>Subtotal: <strong>R$ {{ subtotal }}</strong></p>
+            <p>Frete: <strong>{{ frete }}</strong></p>
+        </div>
+        <div class="summary-line">
+            <span>Total:</span>
+            <span class="summary-total">R$ {{ total }}</span>
+        </div>
+        <a href="{% url 'finalizar_pedido' %}">
+            <button class="checkout-btn">Finalizar Pedido</button>
+        </a>
+    </aside>
+    {% endif %}
+</main>
+{% endblock %}
+
